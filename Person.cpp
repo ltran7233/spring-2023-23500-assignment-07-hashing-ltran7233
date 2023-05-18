@@ -3,7 +3,8 @@
   #include <iostream>
   #include "Person.h"
 
-
+	Person::Person() {
+	}
 
   Person::Person(std::string first, std::string last, int num){
     this->first = first;

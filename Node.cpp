@@ -1,44 +1,38 @@
+#include <iostream>
 #include "Node.h"
+#include "Person.h"
 
 Node::Node() {
-  data = 0;
-  left = nullptr;
-  right = nullptr;
+  this->next = nullptr;
 }
 
-Node::Node(int data){
+Node::Node(Person data){
   this->data = data;
-  left = nullptr;
-  right = nullptr;
+  this->next = nullptr;
 }
 
-Node::Node(int data, Node *l, Node *r){
+Node::Node(Person data, Node *next){
   this->data = data;
-  left = l;
-  right = r;
+  this->next = next;
 }
 
-int Node::getData(){
-  return data;
+Node::Node(std::string f, std::string l, int n){
+	Person p = Person(f, l, n);
+	this->data = p;
 }
 
-Node * Node::getLeft(){
-  return left;
+void Node::setData(Person data){
+  this->data = data;
 }
 
-Node * Node::getRight(){
-  return right;
+void Node::setNext(Node *next){
+  this->next = next;
 }
 
-void Node::setData(int d){
-  data = d;
+Person Node::getData(){
+  return this->data;
 }
 
-void Node::setLeft(Node *l){
-  left = l;
-}
-
-void Node::setRight(Node *r){
-  right = r;
-  
+Node *Node::getNext(){
+  return this->next;
 }

@@ -3,19 +3,21 @@
 #include "Node.h"
 #include "Person.h"
 
-class List{
+class OList{
  private:
   Node *head;
  public:
-  List();
-  void insert(Person data);
-  void insert(int loc, Person data); //0 indexed
+  OList();
+  void insert(std::string data);
+  void insert(int loc, std::string data); //0 indexed
   int length();
+  std::string find(std::string data);
 
   std::string toString(); // for testing purposes
 
-  bool contains(Person item);
-  Person get(int loc);
+  bool contains(std::string item);
+  std::string get(int loc);
+  void reverse();
   void remove(int loc);
-  ~List();
+  ~OList();
 };

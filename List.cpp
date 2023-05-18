@@ -1,12 +1,12 @@
 #include <iostream>
 #include "Node.h"
-#include "List.h"
+#include "OList.h"
 
-List::List(){
+OList::OList(){
   head = nullptr;
 }
 
-List::~List(){
+OList::~OList(){
 	std::cerr << "Calling the destructor";
     Node *walker = head;
     Node *trailer = nullptr;
@@ -18,7 +18,7 @@ List::~List(){
 }
 
 // insert at the "front" (head)
-void List::insert(Person data){
+void OList::insert(std::string data){
   Node *tmp = new Node(data);
   tmp->setNext(head);
   head = tmp;
@@ -30,7 +30,7 @@ void List::insert(Person data){
   the location where we want to insert 
   Piggybacking 
  */
-void List::insert(int loc, Person data){
+void OList::insert(int loc, std::string data){
   Node *walker, *trailer;
   walker = this->head; // start of the list
   trailer = nullptr; // one behind
@@ -77,7 +77,7 @@ void List::insert(int loc, Person data){
     Change all the insert/delete/remove type
     routines to upate that variable 
  */
-int List::length(){
+int OList::length(){
   int count = 0;
   Node *walker = head;
   while (walker != nullptr){
@@ -87,7 +87,19 @@ int List::length(){
   return count;
 }
 
-std::string List::toString(){
+std::string OList::find(std::string data){
+  Node *walker = head;
+  while (walker != nullptr && walker->getData() != data){
+    walker = walker->getNext();
+  }
+  if (walker == nullptr){
+    return "";
+  } else {
+    return walker->getData();
+  }
+}
+
+std::string OList::toString(){
   Node *tmp = this->head;
   std::string result = "";
   while (tmp != nullptr){
@@ -99,7 +111,7 @@ std::string List::toString(){
   return result;
 }
 
-bool List::contains(Person item){
+bool OList::contains(std::string item){
   Node *walker = this->head;
   while(walker != nullptr){
     if(walker->getData() == item){
@@ -110,7 +122,7 @@ bool List::contains(Person item){
   return false;
 }
 
-Person List::get(int loc){
+std::string OList::get(int loc){
   Node *tmp = this->head;
   while(loc > 0 && tmp != nullptr){
     loc--;
@@ -123,7 +135,21 @@ Person List::get(int loc){
   return tmp->getData();
 }
 
-void List::remove(int loc){
+void OList::reverse(){
+  Node *curr = head;
+  Node *prev = nullptr;
+  Node *next = nullptr;
+
+  while(curr != nullptr){
+    next = curr->getNext();
+    curr->setNext(prev);
+    prev = curr;
+    curr = next;
+  }
+  head = prev;
+}
+
+void OList::remove(int loc){
   Node *walker, *trailer;
   walker = this->head; // start of the list
   trailer = nullptr; // one behind

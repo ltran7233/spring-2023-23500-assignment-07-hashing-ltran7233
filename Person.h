@@ -9,11 +9,8 @@
     int idnum; // some id number
 
    public:
+    Person();
     Person(std::string first, std::string last, int num);
     std::string get_name();
     int get_id();
-
-
   };
-
-
