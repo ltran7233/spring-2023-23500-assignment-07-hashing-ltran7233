@@ -13,4 +13,4 @@ Node.o: Node.cpp Node.h
 tests.o: tests.cpp OList.h Person.h Node.h doctest.h
 
 clean:
-	rm -f main main.o Node.o OList.o Person.o Dictionary.o
+	rm -f main main.o tests.o Node.o OList.o Person.o Dictionary.o
